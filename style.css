@@ -10,6 +10,7 @@ body {
     min-height: 100vh;
 }
 
+<<<<<<< HEAD
 :root {
     --bg-main: #0f172a;
     --bg-card: #1e293b;
@@ -132,3 +133,21 @@ body {
 .log-item.info { border-left: 4px solid var(--accent-green); }
 .timestamp { color: var(--text-muted); }
 .service { color: var(--accent-blue); }
+=======
+@media (max-width: 1024px) {
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 768px) {
+    .app-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 70px 1fr;
+    }
+    .sidebar {
+        display: none;
+    }
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
