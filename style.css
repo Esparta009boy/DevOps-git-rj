@@ -187,3 +187,154 @@ body {
         grid-template-columns: 1fr;
     }
 }
+/* ==========================================
+   STATUS DOS SERVIÇOS
+   ========================================== */
+.services-section {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #ffffff;
+}
+
+.services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.services-header h3 {
+    font-size: 16px;
+    color: #ffffff;
+    margin: 0;
+}
+
+.last-update {
+    font-size: 12px;
+    color: #94a3b8;
+    background: #f1f5f9;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.service-card {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    border-left: 4px solid #22c55e;
+}
+
+.service-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.service-card.operational {
+    border-left-color: #22c55e;
+    background: #f0fdf4;
+}
+
+.service-card.degraded {
+    border-left-color: #d97706;
+    background: #fffbeb;
+}
+
+.service-card.down {
+    border-left-color: #dc2626;
+    background: #fef2f2;
+}
+
+.service-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.service-icon {
+    font-size: 20px;
+}
+
+.service-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+.service-status {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.service-card.operational .service-status {
+    color: #22c55e;
+}
+
+.service-card.degraded .service-status {
+    color: #d97706;
+}
+
+.service-card.down .service-status {
+    color: #dc2626;
+}
+
+.service-metrics {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.service-metrics .metric {
+    font-size: 12px;
+    color: #64748b;
+    font-family: monospace;
+}
+
+/* ==========================================
+   RESPONSIVIDADE - STATUS DOS SERVIÇOS
+   ========================================== */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .service-metrics {
+        align-items: flex-start;
+        flex-direction: row;
+        gap: 12px;
+    }
+    
+    .services-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
