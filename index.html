@@ -8,11 +8,15 @@
 </head>
 <body>
     <div class="app-layout">
+        <!-- ===== SIDEBAR ===== -->
         <aside class="sidebar">
-        </aside>
-    </div>
-    <aside class="sidebar">
-            <!-- ADICIONE ISSO: -->
+            <!-- Logotipo -->
+            <div class="sidebar-logo">
+                <span class="logo-icon">📊</span>
+                <span class="logo-text">Olly Dashboard</span>
+            </div>
+
+            <!-- Menu de Navegação -->
             <nav class="menu">
                 <a href="#" class="active">Visão Geral</a>
                 <a href="#">Métricas</a>
@@ -21,58 +25,114 @@
                 <a href="#">Configurações</a>
             </nav>
         </aside>
-        <header class="topbar">
-            <div class="search-box">
-                <input type="text" placeholder="Buscar métricas, nós ou logs...">
-            </div>
-            <div class="user-profile">
-                <div class="avatar">Admin</div>
-            </div>
-        </header>
-        <main class="content-area">
-            <div class="kpi-grid">
+
+        <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+        <div class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar métricas, nós ou logs...">
+                </div>
+                <div class="user-profile">
+                    <div class="avatar">Admin</div>
+                </div>
+            </header>
+
+            <!-- Área de Conteúdo -->
+            <div class="content-area">
+                <!-- Grid de KPIs -->
                 <div class="kpi-grid">
-                    <main class="content-area">
-            <div class="kpi-grid">
-                <!-- Cards de KPI ficam aqui -->
-            </div>
-            
-            <!-- ADICIONE ESTE BLOCO ABAIXO: -->
-            <div class="logs-section">
-                <h3>Logs de Eventos Recentes</h3>
-                <div class="log-list">
-                    <div class="log-item error">
-                        <span class="timestamp">10:45:21</span>
-                        <span class="service">[auth-service]</span>
-                        <span class="message">Connection timeout to database</span>
+                    <!-- Card 1: Uptime -->
+                    <div class="kpi-card uptime">
+                        <div class="kpi-header">
+                            <h3>Uptime</h3>
+                        </div>
+                        <div class="value">99.97%</div>
+                        <div class="kpi-footer">
+                            <span class="status"> Eficiência</span>
+                            <span class="period">operacional dos últimos 30 dias</span>
+                        </div>
+                        <div class="uptime-bar">
+                            <div class="uptime-progress" style="width: 99.97%"></div>
+                        </div>
                     </div>
-                    <div class="log-item info">
-                        <span class="timestamp">10:45:19</span>
-                        <span class="service">[payment-api]</span>
-                        <span class="message">Healthcheck passed</span>
+
+                    <!-- Card 2: Latência -->
+                    <div class="kpi-card">
+                        <h3>Latência Média (p95)</h3>
+                        <div class="value">42ms</div>
+                        <div class="trend negative">↑ 5ms</div>
+                    </div>
+
+                    <!-- Card 3: Requisições -->
+                    <div class="kpi-card">
+                        <h3>Requisições</h3>
+                        <div class="value">1.2M</div>
+                        <div class="trend positive">↑ 12%</div>
+                    </div>
+
+                    <!-- Card 4: Taxa de Erro -->
+                    <div class="kpi-card">
+                        <h3>Taxa de Erro (5xx)</h3>
+                        <div class="value alert">0.15%</div>
+                        <div class="trend danger">↑ 0.05%</div>
+                    </div>
+                </div>
+
+                <!-- Gráfico de Uptime -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>📈 Uptime - Últimos 7 Dias</h3>
+                        <span class="chart-avg">Média: 99.94%</span>
+                    </div>
+                    <div class="chart-bars">
+                        <div class="chart-bar" data-day="Seg" style="height: 100%"></div>
+                        <div class="chart-bar" data-day="Ter" style="height: 99%"></div>
+                        <div class="chart-bar" data-day="Qua" style="height: 100%"></div>
+                        <div class="chart-bar" data-day="Qui" style="height: 98%"></div>
+                        <div class="chart-bar" data-day="Sex" style="height: 100%"></div>
+                        <div class="chart-bar" data-day="Sáb" style="height: 99.5%"></div>
+                        <div class="chart-bar" data-day="Dom" style="height: 100%"></div>
+                    </div>
+                    <div class="chart-labels">
+                        <span>Seg</span>
+                        <span>Ter</span>
+                        <span>Qua</span>
+                        <span>Qui</span>
+                        <span>Sex</span>
+                        <span>Sáb</span>
+                        <span>Dom</span>
+                    </div>
+                </div>
+
+                <!-- Seção de Logs Recentes -->
+                <div class="logs-section">
+                    <h3>📋 Logs de Eventos Recentes</h3>
+                    <div class="log-list">
+                        <div class="log-item error">
+                            <span class="timestamp">10:45:21</span>
+                            <span class="service">[auth-service]</span>
+                            <span class="message">Connection timeout to database</span>
+                        </div>
+                        <div class="log-item info">
+                            <span class="timestamp">10:45:19</span>
+                            <span class="service">[payment-api]</span>
+                            <span class="message">Healthcheck passed</span>
+                        </div>
+                        <div class="log-item warn">
+                            <span class="timestamp">10:42:15</span>
+                            <span class="service">[api-gateway]</span>
+                            <span class="message">Rate limit approaching threshold (85%)</span>
+                        </div>
+                        <div class="log-item error">
+                            <span class="timestamp">10:38:22</span>
+                            <span class="service">[database]</span>
+                            <span class="message">Deadlock detected in transaction</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </main>
-                <div class="kpi-card">
-                    <h3>Latência Média (p95)</h3>
-                    <div class="value">42ms</div>
-                    <div class="trend negative">↑ 5ms</div>
-                </div>
-                
-                <div class="kpi-card">
-                    <h3>Taxa de Erro (5xx)</h3>
-                    <div class="value alert">0.15%</div>
-                    <div class="trend danger">↑ 0.05%</div>
-                </div>
-            </div>
-                <div class="kpi-card">
-                    <h3>Latência Média (p95)</h3>
-                    <div class="value">42ms</div>
-                    <div class="trend negative">↑ 5ms</div>
-                </div>
-            </div>
-            </div>
-        </main>
+        </div>
+    </div>
 </body>
 </html>
