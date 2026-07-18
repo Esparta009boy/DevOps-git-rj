@@ -20,6 +20,11 @@
     --shadow-hover: rgba(0,0,0,0.5);
     --kpi-uptime-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     --transition-speed: 0.4s;
+
+    /* Variáveis dinâmicas para os blocos de alertas */
+    --alert-bg-critical: rgba(239, 68, 68, 0.1);
+    --alert-bg-warning: rgba(250, 204, 21, 0.1);
+    --alert-bg-info: rgba(56, 189, 248, 0.1);
 }
 
 /* ==========================================
@@ -39,6 +44,11 @@
     --shadow-color: rgba(0,0,0,0.06);
     --shadow-hover: rgba(0,0,0,0.12);
     --kpi-uptime-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+
+    /* Alertas ajustados para contraste no tema claro */
+    --alert-bg-critical: #fef2f2;
+    --alert-bg-warning: #fffbeb;
+    --alert-bg-info: #eff6ff;
 }
 
 /* ==========================================
@@ -85,7 +95,7 @@ body {
 }
 
 /* ==========================================
-   PASSO 6: CONTAINER DA SIDEBAR
+   CONTAINER DA SIDEBAR
    ========================================== */
 .sidebar {
     background-color: var(--bg-sidebar);
@@ -98,7 +108,7 @@ body {
 }
 
 /* ==========================================
-   PASSO 7: LOGOTIPO DA SIDEBAR
+   LOGOTIPO DA SIDEBAR
    ========================================== */
 .sidebar-logo {
     display: flex;
@@ -124,7 +134,7 @@ body {
 }
 
 /* ==========================================
-   PASSO 8: MENU DE NAVEGAÇÃO
+   MENU DE NAVEGAÇÃO & CONTADORES
    ========================================== */
 .menu {
     display: flex;
@@ -172,11 +182,11 @@ body {
 }
 
 /* ==========================================
-   BADGE DE ALERTAS
+   BADGES (ALERTAS GLOBAIS)
    ========================================== */
 .alert-badge {
     background: var(--accent-red);
-    color: #fff;
+    color: #ffffff;
     font-size: 11px;
     font-weight: 700;
     padding: 2px 10px;
@@ -192,7 +202,7 @@ body {
 }
 
 /* ==========================================
-   PASSO 9 & 10: BARRA SUPERIOR (TOPBAR)
+   BARRA SUPERIOR (TOPBAR)
    ========================================== */
 .topbar {
     background-color: var(--bg-topbar);
@@ -242,7 +252,7 @@ body {
 }
 
 /* ==========================================
-   BOTÃO DE TEMA
+   BOTÕES DE AÇÃO INTERFACES
    ========================================== */
 .theme-toggle {
     background: var(--bg-main);
@@ -264,13 +274,6 @@ body {
     background: var(--bg-hover);
 }
 
-.theme-toggle svg {
-    color: var(--text-main);
-}
-
-/* ==========================================
-   NOTIFICAÇÕES (ALERTAS)
-   ========================================== */
 .notification-icon {
     position: relative;
     cursor: pointer;
@@ -282,10 +285,6 @@ body {
 
 .notification-icon:hover {
     background: var(--bg-hover);
-}
-
-.notification-icon svg {
-    display: block;
 }
 
 .bell-icon {
@@ -303,15 +302,46 @@ body {
 
 .user-profile .avatar {
     background-color: var(--accent-blue);
-    color: #000;
+    color: #000000;
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-weight: bold;
     font-size: 14px;
 }
 
+.export-btn {
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-main);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.export-btn:hover {
+    background: var(--accent-blue);
+    color: #000000;
+    border-color: var(--accent-blue);
+}
+
+.export-btn:hover svg {
+    stroke: #000000;
+}
+
+.export-btn svg {
+    stroke: var(--text-main);
+    transition: stroke 0.3s;
+}
+
 /* ==========================================
-   PASSO 12: GRID DE KPIS
+   GRID DE KPIS
    ========================================== */
 .kpi-grid {
     display: grid;
@@ -354,7 +384,7 @@ body {
 }
 
 /* ==========================================
-   PASSO 13: CARTÃO DE UPTIME
+   CARTÃO DE UPTIME ESPECIAL
    ========================================== */
 .kpi-card.uptime {
     background: var(--kpi-uptime-bg);
@@ -414,7 +444,7 @@ body {
 }
 
 /* ==========================================
-   TENDÊNCIAS
+   INDICADORES DE TENDÊNCIA
    ========================================== */
 .trend.positive {
     color: var(--accent-green);
@@ -585,31 +615,9 @@ body {
     box-shadow: 0 4px 12px var(--shadow-hover);
 }
 
-.service-card.operational {
-    border-left-color: var(--accent-green);
-}
-
-.service-card.degraded {
-    border-left-color: var(--accent-yellow);
-}
-
-.service-card.down {
-    border-left-color: var(--accent-red);
-}
-
-.service-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.service-icon {
-    font-size: 20px;
-}
-
-.service-icon svg {
-    display: block;
-}
+.service-card.operational { border-left-color: var(--accent-green); }
+.service-card.degraded { border-left-color: var(--accent-yellow); }
+.service-card.down { border-left-color: var(--accent-red); }
 
 .service-details {
     display: flex;
@@ -627,17 +635,9 @@ body {
     color: var(--text-muted);
 }
 
-.service-card.operational .service-status {
-    color: var(--accent-green);
-}
-
-.service-card.degraded .service-status {
-    color: var(--accent-yellow);
-}
-
-.service-card.down .service-status {
-    color: var(--accent-red);
-}
+.service-card.operational .service-status { color: var(--accent-green); }
+.service-card.degraded .service-status { color: var(--accent-yellow); }
+.service-card.down .service-status { color: var(--accent-red); }
 
 .service-metrics {
     display: flex;
@@ -653,7 +653,7 @@ body {
 }
 
 /* ==========================================
-   PAINEL DE ALERTAS
+   PAINEL DE ALERTAS DETALHADO
    ========================================== */
 .alerts-panel {
     background: var(--bg-card);
@@ -677,7 +677,7 @@ body {
 
 .alerts-panel-header .alerts-count {
     background: var(--accent-red);
-    color: #fff;
+    color: #ffffff;
     padding: 4px 14px;
     border-radius: 20px;
     font-size: 13px;
@@ -708,14 +708,17 @@ body {
 
 .alert-item.critical {
     border-left-color: var(--accent-red);
+    background: var(--alert-bg-critical);
 }
 
 .alert-item.warning {
     border-left-color: var(--accent-yellow);
+    background: var(--alert-bg-warning);
 }
 
 .alert-item.info {
     border-left-color: var(--accent-blue);
+    background: var(--alert-bg-info);
 }
 
 .alert-content {
@@ -726,10 +729,6 @@ body {
 
 .alert-icon {
     font-size: 18px;
-}
-
-.alert-icon svg {
-    display: block;
 }
 
 .alert-details {
@@ -773,12 +772,12 @@ body {
 
 .alert-actions button:hover {
     background: var(--accent-blue);
-    color: #000;
+    color: #000000;
     border-color: var(--accent-blue);
 }
 
 /* ==========================================
-   PASSO 18: SEÇÃO DE LOGS RECENTES
+   SEÇÃO DE LOGS RECENTES
    ========================================== */
 .logs-section {
     background-color: var(--bg-card);
@@ -811,29 +810,13 @@ body {
     align-items: center;
 }
 
-.log-item.error { 
-    border-left: 4px solid var(--accent-red); 
-}
+.log-item.error { border-left: 4px solid var(--accent-red); }
+.log-item.info { border-left: 4px solid var(--accent-green); }
+.log-item.warn { border-left: 4px solid var(--accent-yellow); }
 
-.log-item.info { 
-    border-left: 4px solid var(--accent-green); 
-}
-
-.log-item.warn { 
-    border-left: 4px solid var(--accent-yellow); 
-}
-
-.timestamp { 
-    color: var(--text-muted); 
-}
-
-.service { 
-    color: var(--accent-blue); 
-}
-
-.message {
-    color: var(--text-main);
-}
+.timestamp { color: var(--text-muted); }
+.service { color: var(--accent-blue); }
+.message { color: var(--text-main); }
 
 /* ==========================================
    ÚLTIMAS ATIVIDADES
@@ -915,10 +898,6 @@ body {
     color: var(--text-muted);
 }
 
-.activity-icon svg {
-    display: block;
-}
-
 .activity-content {
     flex: 1;
     display: flex;
@@ -983,7 +962,7 @@ body {
 }
 
 /* ==========================================
-   PASSO 20: CORREÇÃO / RESPONSIVIDADE (HOTFIX)
+   MEDIA QUERIES COMPLETA (RESPONSIVIDADE)
    ========================================== */
 @media (max-width: 1024px) {
     .kpi-grid {
@@ -1028,6 +1007,7 @@ body {
     .topbar-right {
         width: 100%;
         justify-content: flex-end;
+        gap: 12px;
     }
     .service-card {
         flex-direction: column;
@@ -1079,38 +1059,4 @@ body {
         align-items: flex-start;
         gap: 8px;
     }
-}
-
-/* ==========================================
-   BOTÃO DE EXPORTAR
-   ========================================== */
-.export-btn {
-    background: var(--bg-main);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 8px 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--text-main);
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: inherit;
-}
-
-.export-btn:hover {
-    background: var(--accent-blue);
-    color: #000;
-    border-color: var(--accent-blue);
-}
-
-.export-btn:hover svg {
-    stroke: #000;
-}
-
-.export-btn svg {
-    stroke: var(--text-main);
-    transition: stroke 0.3s;
 }
