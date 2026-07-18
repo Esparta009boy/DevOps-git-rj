@@ -401,13 +401,21 @@ body {
 
 .kpi-card.uptime .kpi-header h3 {
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.75rem;
+    font-size: 13px;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
+.kpi-card.uptime .kpi-icon {
+    font-size: 18px;
+}
+
 .kpi-card.uptime .value {
     color: var(--text-white);
+    font-size: 32px;
+    font-weight: 700;
+    margin: 4px 0 8px 0;
 }
 
 .kpi-card.uptime .kpi-footer {
