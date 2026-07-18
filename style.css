@@ -1,176 +1,11 @@
 /* ==========================================
-   PASSO 4: VARIÁVEIS DE TEMA
-   ========================================== */
-:root {
-    --bg-main: #0f172a;
-    --bg-card: #1e293b;
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
-    --accent-blue: #38bdf8;
-    --accent-green: #4ade80;
-    --accent-red: #ef4444;
-    --border-color: #33415555;
-}
-
-/* Estilos gerais de reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: var(--bg-main);
-    color: var(--text-main);
-    font-family: system-ui, -apple-system, sans-serif;
-}
-
-/* ==========================================
-   PASSO 6: CONTAINER DA SIDEBAR
-   ========================================== */
-.sidebar {
-    background-color: var(--bg-card);
-    grid-row: 1/3;
-    border-right: 1px solid var(--border-color);
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-/* ==========================================
-   PASSO 8: MENU DE NAVEGAÇÃO
-   ========================================== */
-.menu {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-.menu a {
-    color: var(--text-muted);
-    text-decoration: none;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    transition: all 0.3s;
-}
-.menu a:hover, .menu a.active {
-    background-color: var(--bg-main);
-    color: var(--accent-blue);
-}
-
-/* ==========================================
-   PASSO 10: ELEMENTOS DA TOPBAR
-   ========================================== */
-.search-box input {
-    background-color: var(--bg-main);
-    border: 1px solid var(--border-color);
-    color: var(--text-main);
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    width: 300px;
-}
-.search-box input:focus {
-    outline: 1px solid var(--accent-blue);
-}
-.avatar {
-    background-color: var(--accent-blue);
-    color: #000;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-weight: bold;
-}
-
-/* ==========================================
-   PASSO 12: GRID DE KPIS
-   ========================================== */
-.kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-.kpi-card {
-    background-color: var(--bg-card);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-}
-
-/* ==========================================
-   PASSO 14: CARTÃO DE LATÊNCIA
-   ========================================== */
-.kpi-card h3 {
-    color: var(--text-muted);
-    font-size: 0.875rem;
-    text-transform: uppercase;
-}
-.kpi-card .value {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0.5rem 0;
-}
-.trend.positive {
-    color: var(--accent-green);
-    font-size: 0.875rem;
-}
-.trend.negative {
-    color: var(--accent-blue);
-    font-size: 0.875rem;
-}
-
-/* ==========================================
-   PASSO 16: CARTÃO DE TAXA DE ERRO
-   ========================================== */
-.kpi-card .value.alert {
-    color: var(--accent-red);
-}
-.trend.danger {
-    color: var(--accent-red);
-    font-size: 0.875rem;
-}
-
-/* ==========================================
-   PASSO 18: SEÇÃO DE LOGS RECENTES
-   ========================================== */
-.logs-section {
-    background-color: var(--bg-card);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-}
-.log-list {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-.log-item {
-    display: grid;
-    grid-template-columns: 100px 150px 1fr;
-    padding: 0.75rem;
-    border-radius: 6px;
-    font-family: monospace;
-    font-size: 0.875rem;
-    background-color: var(--bg-main);
-}
-.log-item.error { 
-    border-left: 4px solid var(--accent-red); 
-}
-.log-item.info { 
-    border-left: 4px solid var(--accent-green); 
-}
-.timestamp { 
-    color: var(--text-muted); 
-}
-.service { 
-    color: var(--accent-blue); 
-}
-
-/* ==========================================
-   PASSO 20: CORREÇÃO / RESPONSIVIDADE (HOTFIX)
+   MEDIA QUERIES (RESPONSIVIDADE UNIFICADA)
    ========================================== */
 @media (max-width: 1024px) {
     .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .services-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -186,28 +21,112 @@ body {
     .kpi-grid {
         grid-template-columns: 1fr;
     }
-    /* ===== SIDEBAR LOGO ===== */
-.sidebar-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-    margin-bottom: 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
+    
+    /* ===== SIDEBAR LOGO (Feature) ===== */
+    .sidebar-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 20px;
+        margin-bottom: 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
 
-.sidebar-logo .logo-icon {
-    font-size: 28px;
-}
+    .sidebar-logo .logo-icon {
+        font-size: 28px;
+    }
 
-.sidebar-logo .logo-text {
-    font-size: 20px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.5px;
-}
+    .sidebar-logo .logo-text {
+        font-size: 20px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -0.5px;
+    }
 
-.sidebar-logo .logo-text span {
-    color: #4f46e5;
-}
+    .sidebar-logo .logo-text span {
+        color: #4f46e5;
+    }
+
+    /* ===== OUTROS ELEMENTOS (Main) ===== */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    .log-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        font-size: 12px;
+    }
+    .content-area {
+        padding: 12px;
+    }
+    .search-box input {
+        width: 100%;
+    }
+    .topbar {
+        flex-direction: column;
+        height: auto;
+        padding: 12px 16px;
+        gap: 8px;
+    }
+    .topbar-right {
+        width: 100%;
+        justify-content: flex-end;
+        gap: 12px;
+    }
+    .service-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .service-metrics {
+        align-items: flex-start;
+        flex-direction: row;
+        gap: 12px;
+    }
+    .services-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .alert-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .alert-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    .activity-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .activity-details {
+        flex-wrap: wrap;
+    }
+    .activity-time {
+        align-self: flex-end;
+    }
+    .activities-timeline::before {
+        left: 16px;
+    }
+    .activities-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    /* Responsividade do Gráfico Corrigida */
+    .chart-container {
+        padding: 16px;
+    }
+    .chart-header h3 {
+        font-size: 13px;
+        color: var(--text-main);
+    }
+    .chart-bars {
+        height: 80px;
+        gap: 4px;
+    }
 }
