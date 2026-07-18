@@ -23,7 +23,7 @@
 }
 
 /* ==========================================
-   TEMA CLARO (opcional - via data-theme)
+   TEMA CLARO (via data-theme)
    ========================================== */
 [data-theme="light"] {
     --bg-main: #f1f5f9;
@@ -70,6 +70,20 @@ body {
     min-height: 100vh;
 }
 
+.main-content {
+    display: grid;
+    grid-template-rows: 70px 1fr;
+    background: var(--bg-main);
+}
+
+.content-area {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: auto;
+}
+
 /* ==========================================
    PASSO 6: CONTAINER DA SIDEBAR
    ========================================== */
@@ -98,6 +112,10 @@ body {
     font-size: 28px;
 }
 
+.sidebar-logo .logo-icon svg {
+    color: var(--accent-blue);
+}
+
 .sidebar-logo .logo-text {
     font-size: 20px;
     font-weight: 700;
@@ -120,7 +138,16 @@ body {
     padding: 0.75rem 1rem;
     border-radius: 8px;
     transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-size: 14px;
+}
+
+.menu a svg {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    transition: color 0.3s;
 }
 
 .menu a:hover,
@@ -129,15 +156,43 @@ body {
     color: var(--accent-blue);
 }
 
-/* Menu com alerta */
+.menu a:hover svg,
+.menu a.active svg {
+    color: var(--accent-blue);
+}
+
 .menu a.has-alert {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.menu a.has-alert svg {
+    flex-shrink: 0;
+}
+
 /* ==========================================
-   PASSO 9: BARRA SUPERIOR (TOPBAR)
+   BADGE DE ALERTAS
+   ========================================== */
+.alert-badge {
+    background: var(--accent-red);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 20px;
+    min-width: 20px;
+    text-align: center;
+    animation: pulse-badge 2s infinite;
+}
+
+@keyframes pulse-badge {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* ==========================================
+   PASSO 9 & 10: BARRA SUPERIOR (TOPBAR)
    ========================================== */
 .topbar {
     background-color: var(--bg-topbar);
@@ -149,34 +204,21 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
-.main-content {
-    display: grid;
-    grid-template-rows: 70px 1fr;
-    background: var(--bg-main);
-}
-
-.content-area {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    overflow-y: auto;
-}
-
-/* ==========================================
-   PASSO 10: ELEMENTOS DA TOPBAR
-   ========================================== */
 .topbar-right {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
+.search-box {
+    position: relative;
+}
+
 .search-box input {
     background-color: var(--bg-main);
     border: 1px solid var(--border-color);
     color: var(--text-main);
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem 0.5rem 36px;
     border-radius: 6px;
     width: 300px;
     outline: none;
@@ -191,13 +233,12 @@ body {
     color: var(--text-muted);
 }
 
-.user-profile .avatar {
-    background-color: var(--accent-blue);
-    color: #000;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 14px;
+.search-box svg {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
 }
 
 /* ==========================================
@@ -223,6 +264,10 @@ body {
     background: var(--bg-hover);
 }
 
+.theme-toggle svg {
+    color: var(--text-main);
+}
+
 /* ==========================================
    NOTIFICAÇÕES (ALERTAS)
    ========================================== */
@@ -232,26 +277,19 @@ body {
     padding: 8px;
     border-radius: 50%;
     transition: background 0.3s;
+    color: var(--text-main);
 }
 
 .notification-icon:hover {
     background: var(--bg-hover);
 }
 
-.bell-icon {
-    font-size: 22px;
+.notification-icon svg {
+    display: block;
 }
 
-.alert-badge {
-    background: var(--accent-red);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 2px 10px;
-    border-radius: 20px;
-    min-width: 20px;
-    text-align: center;
-    animation: pulse-badge 2s infinite;
+.bell-icon {
+    font-size: 22px;
 }
 
 .topbar-alert {
@@ -263,9 +301,13 @@ body {
     min-width: 18px;
 }
 
-@keyframes pulse-badge {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+.user-profile .avatar {
+    background-color: var(--accent-blue);
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 /* ==========================================
@@ -305,6 +347,10 @@ body {
     font-weight: bold;
     margin: 0.5rem 0;
     color: var(--text-main);
+}
+
+.kpi-card .value.alert {
+    color: var(--accent-red);
 }
 
 /* ==========================================
@@ -368,7 +414,7 @@ body {
 }
 
 /* ==========================================
-   PASSO 14: CARTÃO DE LATÊNCIA
+   TENDÊNCIAS
    ========================================== */
 .trend.positive {
     color: var(--accent-green);
@@ -386,13 +432,6 @@ body {
     padding: 2px 10px;
     border-radius: 20px;
     background: rgba(56, 189, 248, 0.15);
-}
-
-/* ==========================================
-   PASSO 16: CARTÃO DE TAXA DE ERRO
-   ========================================== */
-.kpi-card .value.alert {
-    color: var(--accent-red);
 }
 
 .trend.danger {
@@ -494,64 +533,6 @@ body {
 }
 
 /* ==========================================
-   PASSO 18: SEÇÃO DE LOGS RECENTES
-   ========================================== */
-.logs-section {
-    background-color: var(--bg-card);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-}
-
-.logs-section h3 {
-    color: var(--text-main);
-    font-size: 16px;
-}
-
-.log-list {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.log-item {
-    display: grid;
-    grid-template-columns: 100px 150px 1fr;
-    padding: 0.75rem;
-    border-radius: 6px;
-    font-family: monospace;
-    font-size: 0.875rem;
-    background-color: var(--bg-main);
-    color: var(--text-main);
-    align-items: center;
-}
-
-.log-item.error { 
-    border-left: 4px solid var(--accent-red); 
-}
-
-.log-item.info { 
-    border-left: 4px solid var(--accent-green); 
-}
-
-.log-item.warn { 
-    border-left: 4px solid var(--accent-yellow); 
-}
-
-.timestamp { 
-    color: var(--text-muted); 
-}
-
-.service { 
-    color: var(--accent-blue); 
-}
-
-.message {
-    color: var(--text-main);
-}
-
-/* ==========================================
    STATUS DOS SERVIÇOS
    ========================================== */
 .services-section {
@@ -624,6 +605,10 @@ body {
 
 .service-icon {
     font-size: 20px;
+}
+
+.service-icon svg {
+    display: block;
 }
 
 .service-details {
@@ -743,6 +728,10 @@ body {
     font-size: 18px;
 }
 
+.alert-icon svg {
+    display: block;
+}
+
 .alert-details {
     display: flex;
     flex-direction: column;
@@ -786,6 +775,211 @@ body {
     background: var(--accent-blue);
     color: #000;
     border-color: var(--accent-blue);
+}
+
+/* ==========================================
+   PASSO 18: SEÇÃO DE LOGS RECENTES
+   ========================================== */
+.logs-section {
+    background-color: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.logs-section h3 {
+    color: var(--text-main);
+    font-size: 16px;
+}
+
+.log-list {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.log-item {
+    display: grid;
+    grid-template-columns: 100px 150px 1fr;
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.875rem;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    align-items: center;
+}
+
+.log-item.error { 
+    border-left: 4px solid var(--accent-red); 
+}
+
+.log-item.info { 
+    border-left: 4px solid var(--accent-green); 
+}
+
+.log-item.warn { 
+    border-left: 4px solid var(--accent-yellow); 
+}
+
+.timestamp { 
+    color: var(--text-muted); 
+}
+
+.service { 
+    color: var(--accent-blue); 
+}
+
+.message {
+    color: var(--text-main);
+}
+
+/* ==========================================
+   ÚLTIMAS ATIVIDADES
+   ========================================== */
+.activities-section {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.activities-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.activities-header h3 {
+    font-size: 16px;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.activities-count {
+    font-size: 12px;
+    color: var(--text-muted);
+    background: var(--bg-main);
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.activities-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+}
+
+.activities-timeline::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 30px;
+    bottom: 30px;
+    width: 2px;
+    background: var(--border-color);
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: var(--bg-main);
+    transition: all 0.3s;
+    position: relative;
+}
+
+.activity-item:hover {
+    transform: translateX(4px);
+    background: var(--bg-card);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.activity-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 2px solid var(--border-color);
+    position: relative;
+    z-index: 1;
+    color: var(--text-muted);
+}
+
+.activity-icon svg {
+    display: block;
+}
+
+.activity-content {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.activity-details {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.activity-user {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 14px;
+}
+
+.activity-action {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.activity-target {
+    color: var(--accent-blue);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.activity-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.activity-badge.success {
+    background: rgba(74, 222, 128, 0.15);
+    color: var(--accent-green);
+}
+
+.activity-badge.warning {
+    background: rgba(250, 204, 21, 0.15);
+    color: var(--accent-yellow);
+}
+
+.activity-badge.info {
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--accent-blue);
+}
+
+.activity-time {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: monospace;
+    white-space: nowrap;
 }
 
 /* ==========================================
@@ -866,4 +1060,57 @@ body {
     .chart-container {
         padding: 16px;
     }
+    .activity-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .activity-details {
+        flex-wrap: wrap;
+    }
+    .activity-time {
+        align-self: flex-end;
+    }
+    .activities-timeline::before {
+        left: 16px;
+    }
+    .activities-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+/* ==========================================
+   BOTÃO DE EXPORTAR
+   ========================================== */
+.export-btn {
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-main);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.export-btn:hover {
+    background: var(--accent-blue);
+    color: #000;
+    border-color: var(--accent-blue);
+}
+
+.export-btn:hover svg {
+    stroke: #000;
+}
+
+.export-btn svg {
+    stroke: var(--text-main);
+    transition: stroke 0.3s;
 }
