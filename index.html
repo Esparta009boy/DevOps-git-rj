@@ -8,7 +8,8 @@
 </head>
 <body>
     <div class="app-layout">
-        <!-- ===== SIDEBAR ===== -->
+        
+        <!-- SIDEBAR -->
         <aside class="sidebar">
             <!-- Logotipo -->
             <div class="sidebar-logo">
@@ -21,26 +22,55 @@
                 <a href="#" class="active">Visão Geral</a>
                 <a href="#">Métricas</a>
                 <a href="#">Logs de Rede</a>
-                <a href="#">Alertas</a>
+                <a href="#" class="has-alert">
+                    Alertas
+                    <span class="alert-badge">3</span>
+                </a>
                 <a href="#">Configurações</a>
             </nav>
         </aside>
 
-        <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+        <!-- CONTEÚDO PRINCIPAL -->
         <div class="main-content">
-            <!-- Topbar -->
+            
+            <!-- TOPBAR UNIFICADA -->
             <header class="topbar">
+                <div class="topbar-left">
+                    <!-- Botão de Exportar -->
+                    <button class="export-btn" id="exportBtn" title="Exportar dados">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
+                            <path d="M12 3v12m-4-4l4 4 4-4"/>
+                        </svg>
+                        <span>Exportar</span>
+                    </button>
+                </div>
+
                 <div class="search-box">
                     <input type="text" placeholder="Buscar métricas, nós ou logs...">
                 </div>
-                <div class="user-profile">
-                    <div class="avatar">Admin</div>
+
+                <div class="topbar-right">
+                    <!-- Botão de Tema -->
+                    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    
+                    <!-- Ícone de Notificações -->
+                    <div class="notification-icon">
+                        <span class="bell-icon">🔔</span>
+                        <span class="alert-badge topbar-alert">3</span>
+                    </div>
+                    
+                    <!-- Perfil do Usuário -->
+                    <div class="user-profile">
+                        <div class="avatar">Admin</div>
+                    </div>
                 </div>
             </header>
 
-            <!-- Área de Conteúdo -->
-            <div class="content-area">
-                <!-- Grid de KPIs -->
+            <!-- ÁREA DE CONTEÚDO -->
+            <main class="content-area">
                 <div class="kpi-grid">
                     <!-- Card 1: Uptime -->
                     <div class="kpi-card uptime">
@@ -49,8 +79,8 @@
                         </div>
                         <div class="value">99.97%</div>
                         <div class="kpi-footer">
-                            <span class="status"> Eficiência</span>
-                            <span class="period">operacional dos últimos 30 dias</span>
+                            <span class="status"> Operacional</span>
+                            <span class="period">Últimos 30 dias</span>
                         </div>
                         <div class="uptime-bar">
                             <div class="uptime-progress" style="width: 99.97%"></div>
@@ -79,7 +109,7 @@
                     </div>
                 </div>
 
-                <!-- Gráfico de Uptime -->
+                <!-- Gráfico -->
                 <div class="chart-container">
                     <div class="chart-header">
                         <h3>📈 Uptime - Últimos 7 Dias</h3>
@@ -95,13 +125,126 @@
                         <div class="chart-bar" data-day="Dom" style="height: 100%"></div>
                     </div>
                     <div class="chart-labels">
-                        <span>Seg</span>
-                        <span>Ter</span>
-                        <span>Qua</span>
-                        <span>Qui</span>
-                        <span>Sex</span>
-                        <span>Sáb</span>
-                        <span>Dom</span>
+                        <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span>
+                    </div>
+                </div>
+
+                <!-- Status dos Serviços -->
+                <div class="services-section">
+                    <div class="services-header">
+                        <h3> Status dos Serviços</h3>
+                        <span class="last-update">Atualizado: agora</span>
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-card operational">
+                            <div class="service-details">
+                                <span class="service-name">API Gateway</span>
+                                <span class="service-status">Operacional</span>
+                            </div>
+                            <div class="service-metrics">
+                                <span class="metric">Uptime: 99.99%</span>
+                                <span class="metric">Resp: 12ms</span>
+                            </div>
+                        </div>
+                        <div class="service-card operational">
+                            <div class="service-details">
+                                <span class="service-name">Auth Service</span>
+                                <span class="service-status">Operacional</span>
+                            </div>
+                            <div class="service-metrics">
+                                <span class="metric">Uptime: 99.97%</span>
+                                <span class="metric">Resp: 8ms</span>
+                            </div>
+                        </div>
+                        <div class="service-card degraded">
+                            <div class="service-details">
+                                <span class="service-name">Payment API</span>
+                                <span class="service-status">Degradado</span>
+                            </div>
+                            <div class="service-metrics">
+                                <span class="metric">Uptime: 98.50%</span>
+                                <span class="metric">Resp: 45ms</span>
+                            </div>
+                        </div>
+                        <div class="service-card operational">
+                            <div class="service-details">
+                                <span class="service-name">Database</span>
+                                <span class="service-status">Operacional</span>
+                            </div>
+                            <div class="service-metrics">
+                                <span class="metric">Uptime: 99.95%</span>
+                                <span class="metric">Resp: 3ms</span>
+                            </div>
+                        </div>
+                        <div class="service-card down">
+                            <div class="service-details">
+                                <span class="service-name">Cache Service</span>
+                                <span class="service-status">Indisponível</span>
+                            </div>
+                            <div class="service-metrics">
+                                <span class="metric">Uptime: 0.00%</span>
+                                <span class="metric">Resp: --</span>
+                            </div>
+                        </div>
+                        <div class="service-card operational">
+                            <div class="service-details">
+                                <span class="service-name">Notification</span>
+                                <span class="service-status">Operacional</span>
+                            </div>
+                            <div class="service-metrics">
+                                <span class="metric">Uptime: 99.98%</span>
+                                <span class="metric">Resp: 15ms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Painel de Alertas -->
+                <div class="alerts-panel">
+                    <div class="alerts-panel-header">
+                        <h3> Alertas Ativos</h3>
+                        <span class="alerts-count">3 alertas</span>
+                    </div>
+                    <div class="alerts-list">
+                        <div class="alert-item critical">
+                            <div class="alert-content">
+                                🔴
+                                <div class="alert-details">
+                                    <span class="alert-title">Cache Service Indisponível</span>
+                                    <span class="alert-description">Serviço de cache fora do ar há 2 minutos</span>
+                                </div>
+                            </div>
+                            <div class="alert-actions">
+                                <span class="alert-time">10:45:21</span>
+                                <button>Resolver</button>
+                            </div>
+                        </div>
+                        <div class="alert-item warning">
+                            <div class="alert-content">
+                                🟡
+                                <div class="alert-details">
+                                    <span class="alert-title">Alta Latência no Payment API</span>
+                                    <span class="alert-description">Tempo de resposta acima de 40ms (p95)</span>
+                                </div>
+                            </div>
+                            <div class="alert-actions">
+                                <span class="alert-time">10:42:15</span>
+                                <button>Resolver</button>
+                            </div>
+                        </div>
+                        <div class="alert-item warning">
+                            <div class="alert-content">
+                                🟡
+                                <div class="alert-details">
+                                    <span class="alert-title">Rate Limit Aproximando</span>
+                                    <span class="alert-description">API Gateway com 85% do limite atingido</span>
+                                </div>
+                            </div>
+                            <div class="alert-actions">
+                                <span class="alert-time">10:30:45</span>
+                                <button>Resolver</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -129,10 +272,90 @@
                             <span class="service">[database]</span>
                             <span class="message">Deadlock detected in transaction</span>
                         </div>
+                        <div class="log-item info">
+                            <span class="timestamp">10:35:10</span>
+                            <span class="service">[cache-service]</span>
+                            <span class="message">Cache refresh completed (1,245 items)</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <!-- Últimas Atividades -->
+                <div class="activities-section">
+                    <div class="activities-header">
+                        <h3> Últimas Atividades</h3>
+                        <span class="activities-count">12 atividades nas últimas 24h</span>
+                    </div>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">🚀</div>
+                            <div class="activity-content">
+                                <div class="activity-details">
+                                    <span class="activity-user">João Silva</span>
+                                    <span class="activity-action">fez deploy da versão</span>
+                                    <span class="activity-target">v2.3.1</span>
+                                    <span class="activity-badge success">Concluído</span>
+                                </div>
+                                <span class="activity-time">Há 5 minutos</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">⚠️</div>
+                            <div class="activity-content">
+                                <div class="activity-details">
+                                    <span class="activity-user">Sistema</span>
+                                    <span class="activity-action">gerou alerta de</span>
+                                    <span class="activity-target">alta latência</span>
+                                    <span class="activity-badge warning">Em andamento</span>
+                                </div>
+                                <span class="activity-time">Há 12 minutes</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">✅</div>
+                            <div class="activity-content">
+                                <div class="activity-details">
+                                    <span class="activity-user">Maria Santos</span>
+                                    <span class="activity-action">resolveu o incidente</span>
+                                    <span class="activity-target">#INC-2024-001</span>
+                                    <span class="activity-badge success">Resolvido</span>
+                                </div>
+                                <span class="activity-time">Há 28 minutos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('.theme-icon');
+        
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+        
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.textContent = '☀️';
+            } else {
+                themeIcon.textContent = '🌙';
+            }
+        }
+    </script>
 </body>
 </html>
