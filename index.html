@@ -13,22 +13,31 @@
     </div>
     <aside class="sidebar">
             <!-- ADICIONE ISSO: -->
-            <nav class="menu">
-                <a href="#" class="active">Visão Geral</a>
-                <a href="#">Métricas</a>
-                <a href="#">Logs de Rede</a>
-                <a href="#">Alertas</a>
-                <a href="#">Configurações</a>
-            </nav>
+           <nav class="menu">
+     <a href="#" class="active">Visão Geral</a>
+     <a href="#">Métricas</a>
+     <a href="#">Logs de Rede</a>
+     <a href="#" class="has-alert">
+        Alertas
+        <span class="alert-badge">3</span>
+     </a>
+     <a href="#">Configurações</a>
+     </nav>
         </aside>
         <header class="topbar">
-            <div class="search-box">
-                <input type="text" placeholder="Buscar métricas, nós ou logs...">
-            </div>
-            <div class="user-profile">
-                <div class="avatar">Admin</div>
-            </div>
-        </header>
+    <div class="search-box">
+        <input type="text" placeholder="Buscar métricas, nós ou logs...">
+    </div>
+    <div class="topbar-right">
+        <div class="notification-icon">
+            <span class="bell-icon">🔔</span>
+            <span class="alert-badge topbar-alert">3</span>
+        </div>
+        <div class="user-profile">
+            <div class="avatar">Admin</div>
+        </div>
+    </div>
+</header>
         <main class="content-area">
             <div class="kpi-grid">
                 <div class="kpi-grid">
