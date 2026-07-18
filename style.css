@@ -72,7 +72,7 @@ body {
 }
 
 /* ==========================================
-   PASSO 5: LAYOUT PRINCIPAL (GRID)
+   LAYOUT PRINCIPAL (GRID)
    ========================================== */
 .app-layout {
     display: grid;
@@ -531,6 +531,7 @@ body {
     transform-origin: bottom;
 }
 
+/* Degradês baseados nas cores globais */
 .chart-bar:nth-child(1),
 .chart-bar:nth-child(3),
 .chart-bar:nth-child(5),
@@ -545,6 +546,16 @@ body {
 
 .chart-bar:nth-child(4) {
     background: linear-gradient(180deg, #facc15, #fbbf24);
+}
+
+.chart-bar::after {
+    content: attr(data-day);
+    position: absolute;
+    bottom: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: var(--text-muted);
 }
 
 .chart-labels {
@@ -963,7 +974,7 @@ body {
 }
 
 /* ==========================================
-   MEDIA QUERIES COMPLETA (RESPONSIVIDADE)
+   MEDIA QUERIES (RESPONSIVIDADE UNIFICADA)
    ========================================== */
 @media (max-width: 1024px) {
     .kpi-grid {
@@ -1034,13 +1045,6 @@ body {
         width: 100%;
         justify-content: flex-end;
     }
-    .chart-bars {
-        height: 80px;
-        gap: 4px;
-    }
-    .chart-container {
-        padding: 16px;
-    }
     .activity-content {
         flex-direction: column;
         align-items: flex-start;
@@ -1059,5 +1063,18 @@ body {
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
+    }
+    
+    /* Responsividade do Gráfico Corrigida */
+    .chart-container {
+        padding: 16px;
+    }
+    .chart-header h3 {
+        font-size: 13px;
+        color: var(--text-main);
+    }
+    .chart-bars {
+        height: 80px;
+        gap: 4px;
     }
 }
