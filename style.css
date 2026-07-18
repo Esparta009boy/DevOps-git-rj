@@ -1066,3 +1066,37 @@ body {
         gap: 8px;
     }
 }
+
+/* ==========================================
+   BOTÃO DE EXPORTAR
+   ========================================== */
+.export-btn {
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-main);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.export-btn:hover {
+    background: var(--accent-blue);
+    color: #000;
+    border-color: var(--accent-blue);
+}
+
+.export-btn:hover svg {
+    stroke: #000;
+}
+
+.export-btn svg {
+    stroke: var(--text-main);
+    transition: stroke 0.3s;
+}
