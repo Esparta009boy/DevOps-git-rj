@@ -787,6 +787,7 @@ body {
 }
 
 .logs-section h3 {
+    margin: 0 0 1rem 0;
     color: var(--text-main);
     font-size: 16px;
 }
